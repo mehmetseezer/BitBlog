@@ -46,7 +46,6 @@ class LoginView(APIView):
             print(e)
         
         return Response(response)
-    
 LoginView = LoginView.as_view()
 
 

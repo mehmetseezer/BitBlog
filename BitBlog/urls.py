@@ -20,11 +20,15 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('', include('home.urls')),
     path('api/', include('home.urls_api')),
     path('admin/', admin.site.urls),
+    path("accounts/", include("accounts.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path('froala_editor/', include('froala_editor.urls'))
 ]
 

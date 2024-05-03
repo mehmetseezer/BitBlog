@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{% block title %}{% endblock %} | BitBlog</title>
+  <title>{% block title %} BitBlog {% endblock %}</title>
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,11 +26,9 @@
   <!-- Custom stylesheet - for your changes-->
   <link rel="stylesheet" href="/media/css/custom.css">
   <script src="/media/js/main.js"> </script>
-
-
 </head>
 
-<body style="padding-top: 72px;"> 
+<body style="padding-top: 72px;">
   <input type="hidden" id="csrf" value="{{csrf_token}}">
   <header class="header">
 
@@ -52,12 +50,15 @@
               <a class="btn btn-success" href="{% url 'add_blog' %}">Add Blogs</a>
             </li>
             <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block">
-              <a class="btn btn-dark" href="{% url 'logout' %}">Logout</a>
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-dark" type="submit">Log Out</button>
+              </form>
             </li>
 
             {% else %}
             <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block">
-              <a class="btn btn-primary" href="{% url 'login_view' %}">Login</a>
+              <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
             </li>
             {% endif %}
 
@@ -68,12 +69,11 @@
     <!-- /Navbar -->
   </header>
 
+  <main>
+    {% block content %}
 
-  {% block content %}
-
-
-  {% endblock %}
-
+    {% endblock %}
+  </main>
 
   <footer class="position-relative z-index-10 d-print-none">
 
@@ -91,6 +91,5 @@
 
 
 </body>
-
 
 </html>
