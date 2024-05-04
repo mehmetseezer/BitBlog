@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'froala_editor',
     'rest_framework',
+    'accounts',
     'home',
 ]
 

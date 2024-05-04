@@ -1,0 +1,31 @@
+.card {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Kartın tamamını kaplayacak şekilde ayarlanır */
+}
+
+.card-body {
+    flex-grow: 1;
+    /* İçerik alanının kartın geri kalanını kaplamasını sağlar */
+}
+
+.card-img-top {
+    height: 200px;
+    /* Kart resminin istenen yüksekliği */
+    object-fit: cover;
+    /* Resmi kart boyutlarına sığdırır */
+}
+
+.card-title {
+    font-size: 1.2rem;
+    /* Kart başlığı font büyüklüğü */
+}
+
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* Metni kesmeden önce bir satıra sığdırır */
+}

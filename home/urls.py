@@ -1,13 +1,13 @@
-from django.urls import path
-from .views import *
+from django.contrib import admin
+from django.urls import path, include
+from django.views.generic.base import TemplateView
+from home import views
 
-# routes
 urlpatterns = [
-    path('', home, name='home'),
-    path('login/', login_view, name='login'),
-    path('add_blog/', add_blog, name="add_blog"),
-    path('see_blog/', see_blog, name='see_blog'),
-    path('register/', register, name='register_view'),
-    path('logout/', logout, name="logout"),
-    path('blog_detail/<slug>', blog_detail, name='blog_detail')
+    path("admin/", admin.site.urls),
+    path("accounts/", include("accounts.urls")),  # new
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("", views.home, name="home"),
+    path("add_blog/", views.add_blog, name="add_blog"),
+    path('see_blogs/', views.see_blog, name='see_blog')
 ]
